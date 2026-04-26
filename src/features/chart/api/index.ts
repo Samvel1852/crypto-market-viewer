@@ -1,0 +1,1 @@
+export { fetchMarketChart } from './coingecko';
