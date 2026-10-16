@@ -34,12 +34,11 @@ Return one JSON object with exactly these fields, ready for `save_application`:
   15 location/language/work-mode feasibility. Be calibrated: 90+ is rare.
 - **fitReasons**: 3-5 bullets, each tying a posting requirement to concrete CV evidence.
 - **gaps**: 0-4 honest bullets.
-- **headline**: one line, at most 120 characters, mirroring the posting's title and top 2-3
-  themes in the posting's own vocabulary, e.g.
-  `Technical Product Manager · B2B SaaS · API platforms & data-driven discovery`.
-- **summary**: 3-4 sentences (60-110 words), first person implied (no "I"), leading with the
-  experience most relevant to this posting, including one or two real CV metrics, and
-  closing with what Samvel brings to this team.
+- **headline**: exactly `Technical Product Manager` or `Technical Product Owner`. Use Owner
+  when the posting is a Product Owner role, otherwise Manager. No extra words.
+- **summary**: two sentences, exactly 350 characters (the master Canva summary length), first
+  person implied (no "I"). Lead with the experience most relevant to this posting and keep
+  every fact inside the master CV. This length is what fits the one-page Canva frame.
 - **cvMarkdown**: the full CV in Markdown, starting with `# Samvel Demirtshyan`, then the new
   headline, contact line, `## Professional Summary` with the new summary, then the CV's
   sections. Reorder skills and bullets so the posting's must-haves surface first and mirror

@@ -30,7 +30,9 @@ the packs on a preview page and applies with one click. You never submit applica
    object. Run several tailor tasks in parallel. Then call `save_application` with the result.
    Save each pack as soon as it is ready so a partial run still delivers.
 7. If Canva is connected, follow the `canva-cv` skill to create a tailored Canva copy for each
-   saved pack and re-save the pack with `canvaUrl`. Never modify the master design.
+   saved pack and re-save the pack with `canvaUrl`. Keep the master frame on one page. The
+   headline is only `Technical Product Manager` or `Technical Product Owner`, and the summary
+   stays the same length as the master summary. Never modify the master design.
 8. **Publish** with `publish_digest` and reply with the summary below.
 
 `search_jobs` already removes every job delivered on an earlier day, and `save_application`
