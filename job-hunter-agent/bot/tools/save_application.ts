@@ -2,7 +2,7 @@ import { defineTool } from '@cursor/bdk/tools';
 import { z } from 'zod';
 import { DAILY_LIMIT } from '../lib/config.js';
 import { fingerprint } from '../lib/sources/index.js';
-import { dayJobIds, keys, today, wasDelivered, type ApplicationPack } from '../lib/store.js';
+import { dayJobIds, keys, rememberDelivered, today, wasDelivered, type ApplicationPack } from '../lib/store.js';
 
 export default defineTool({
   description:
@@ -37,6 +37,7 @@ export default defineTool({
 
     if (ids.includes(input.job.id)) {
       await kv.put(keys.pack(input.job.id), { ...input, date, savedAt: new Date().toISOString() });
+      await rememberDelivered({ date, jobId: input.job.id, fingerprint: fp });
       return { saved: true, updated: true, jobId: input.job.id, todayCount: ids.length };
     }
     const seen = await wasDelivered(kv, input.job.id, fp);
@@ -48,7 +49,8 @@ export default defineTool({
     }
 
     const pack: ApplicationPack = { ...input, date, savedAt: new Date().toISOString() };
-    const seenRecord = { date, jobId: input.job.id };
+    const seenRecord = { date, jobId: input.job.id, fingerprint: fp };
+    await rememberDelivered(seenRecord);
     await kv.put(keys.pack(input.job.id), pack);
     await kv.put(keys.seenJob(input.job.id), seenRecord);
     await kv.put(keys.seenFingerprint(fp), seenRecord);

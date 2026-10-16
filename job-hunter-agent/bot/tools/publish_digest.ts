@@ -1,7 +1,7 @@
 import { defineTool } from '@cursor/bdk/tools';
 import { z } from 'zod';
 import { renderDigest } from '../lib/digest.js';
-import { loadPacks, today } from '../lib/store.js';
+import { loadPacks, today, writeReviewPage } from '../lib/store.js';
 
 export default defineTool({
   description:
@@ -17,6 +17,7 @@ export default defineTool({
     const day = date ?? today();
     const packs = await loadPacks(ctx.host.kv, day);
     const html = renderDigest(day, packs);
+    const reviewPath = packs.length > 0 ? await writeReviewPage(day, html) : undefined;
     const path = `digests/${day}.html`;
     await ctx.host.files.write(path, html, { scope: 'deployment' });
     const record = await ctx.artifacts.tag({
@@ -32,6 +33,7 @@ export default defineTool({
       count: packs.length,
       artifactId: record.id,
       downloadPath: `/v1/artifacts/${record.id}/content`,
+      reviewPath,
       localPath: ctx.host.files.materializedPath(path, { scope: 'deployment' }),
     };
   },

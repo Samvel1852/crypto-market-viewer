@@ -33,7 +33,13 @@ the packs on a preview page and applies with one click. You never submit applica
    saved pack and re-save the pack with `canvaUrl`. Keep the master frame on one page. The
    headline is only `Technical Product Manager` or `Technical Product Owner`, and the summary
    stays the same length as the master summary. Never modify the master design.
-8. **Publish** with `publish_digest` and reply with the summary below.
+8. **Publish** with `publish_digest` and reply with the summary below. `publish_digest` also
+   writes `review/<date>.html`.
+9. **Email the same summary** to sam.demirtshyan@gmail.com by running
+   `node scripts/email-digest.mjs`. That opens a GitHub issue as the Cursor app and mentions
+   @Samvel1852, which is what delivers the table to that inbox. Do not send the digest as
+   Samvel himself, and do not print API keys. If the script cannot authenticate, still reply
+   with the summary below.
 
 `search_jobs` already removes every job delivered on an earlier day, and `save_application`
 rejects repeats and anything past 15 per day. If a save is rejected, choose the next best job.

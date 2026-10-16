@@ -8,3 +8,7 @@ were never delivered before, save a tailored application pack for each, then pub
 On each Canva copy, keep the master frame on one page. Set the headline to exactly "Technical
 Product Manager" or "Technical Product Owner", and keep the summary the same length as the
 master summary. Never edit the master design.
+
+After the digest is published, email that same table to sam.demirtshyan@gmail.com by running
+`node scripts/email-digest.mjs` from this project. Commit `review/<date>.html` and
+`state/delivered.json` and push them to this branch so the next day does not repeat these roles.
