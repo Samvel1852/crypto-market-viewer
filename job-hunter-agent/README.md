@@ -1,6 +1,6 @@
 # Job Hunter Agent
 
-A [Cursor BDK](https://cursor.com/docs/bdk) agent that, every day at 09:00 Yerevan time, finds the
+A [Cursor BDK](https://cursor.com/docs/bdk) agent that, every day at 23:00 Yerevan time (19:00 UTC), finds the
 **15 best-fit Product Manager / Product Owner roles** for Samvel Demirtshyan, never repeating a job
 delivered on an earlier day, and prepares a ready-to-send application pack for each:
 
