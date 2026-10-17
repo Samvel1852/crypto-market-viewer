@@ -1,13 +1,25 @@
+import { execFileSync } from 'node:child_process';
 import { readFile, readdir } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const reviewDir = join(root, 'review');
-const OWNER = 'Samvel1852';
-const REPO = 'crypto-market-viewer';
-const BRANCH = 'cursor/launch-job-hunter-f1d5';
 const MENTION = '@Samvel1852';
+
+function git(args) {
+  return execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
+}
+
+function githubRepo() {
+  const remote = git(['remote', 'get-url', 'origin']).replace(/\/\/[^@/]+@/, '//');
+  const match = remote.match(/github\.com[:/]([^/]+)\/([^/.]+)/);
+  if (!match) throw new Error('Origin is not a GitHub repository.');
+  const gitRoot = git(['rev-parse', '--show-toplevel']);
+  const branch = git(['rev-parse', '--abbrev-ref', 'HEAD']);
+  const reviewPrefix = relative(gitRoot, reviewDir).split('\\').join('/');
+  return { owner: match[1], repo: match[2], branch, reviewPrefix };
+}
 
 function decode(value) {
   return value
@@ -119,7 +131,8 @@ if (!key) {
   console.error('CURSOR_API_KEY is not set, so the digest was not emailed.');
   process.exit(1);
 }
-const reviewUrl = `https://htmlpreview.github.io/?https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/job-hunter-agent/review/${date}.html`;
+const { owner: OWNER, repo: REPO, branch: BRANCH, reviewPrefix } = githubRepo();
+const reviewUrl = `https://htmlpreview.github.io/?https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${reviewPrefix}/${date}.html`;
 const title = `${jobs.length} new matches for ${date}`;
 const body = [
   `**${title}**`,

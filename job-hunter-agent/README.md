@@ -7,7 +7,7 @@ delivered on an earlier day, and prepares a ready-to-send application pack for e
 - fit score with reasons and honest gaps
 - tailored **headline** and **professional summary**
 - full tailored CV (ATS-friendly, facts only from the master CV)
-- tailored cover letter
+- tailored cover letter (at most two paragraphs, written in Samvel's voice)
 - optional tailored copy of the Canva CV design
 
 Results land on a review page with a CV preview, cover letter preview, **Download CV (PDF)** and a
@@ -32,18 +32,18 @@ live in `bot/lib/config.ts`.
 2. `search_jobs` queries every source, keeps only product titles, removes duplicates across
    boards and everything delivered before.
 3. The agent shortlists ~30 jobs, reads each with `get_job_details` and scores fit.
-4. For the top 15, the `tailor` subagent writes the headline, summary, CV and cover letter;
-   `save_application` stores each pack and enforces the 15-per-day and never-repeat rules.
+4. For the top 15, the `human` skill and the `tailor` subagent write the headline, a human
+   summary, the CV and a cover letter of at most two paragraphs; `save_application` stores
+   each pack and enforces the 15-per-day and never-repeat rules.
 5. If Canva is connected, the `canva-cv` skill creates a tailored copy of the CV design
    (headline and summary replaced; the master design is never edited).
 6. `publish_digest` builds the review page.
 
 ## Setup
 
-Requires Node 22.13+.
+This directory is the whole agent. It is its own project, not part of another app. Requires Node 22.13+.
 
 ```bash
-cd job-hunter-agent
 npm install
 npx bdk login                # Cursor credential for model turns
 ```

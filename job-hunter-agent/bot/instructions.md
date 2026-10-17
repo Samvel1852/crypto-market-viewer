@@ -25,10 +25,12 @@ the packs on a preview page and applies with one click. You never submit applica
    - 25 seniority and years-of-experience match
    - 20 domain / industry match
    - 15 location, language and work-mode feasibility
-6. **Pick the top 15** (or `remainingToday` from `search_jobs`, if lower). For each pick, delegate
-   tailoring to the `tailor` subagent, passing the master CV, the full posting text and the job
-   object. Run several tailor tasks in parallel. Then call `save_application` with the result.
-   Save each pack as soon as it is ready so a partial run still delivers.
+6. **Pick the top 15** (or `remainingToday` from `search_jobs`, if lower). For each pick, load
+   the `human` skill (`/human`) and delegate tailoring to the `tailor` subagent, passing the
+   master CV, the full posting text and the job object. The summary and the cover letter must
+   both sound like Samvel wrote them. The cover letter is at most two paragraphs. Run several
+   tailor tasks in parallel. Then call `save_application` with the result. Save each pack as
+   soon as it is ready so a partial run still delivers.
 7. If Canva is connected, follow the `canva-cv` skill to create a tailored Canva copy for each
    saved pack and re-save the pack with `canvaUrl`. Keep the master frame on one page. The
    headline is only `Technical Product Manager` or `Technical Product Owner`, and the summary

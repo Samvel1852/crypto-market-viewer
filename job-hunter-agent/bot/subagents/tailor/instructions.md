@@ -36,16 +36,16 @@ Return one JSON object with exactly these fields, ready for `save_application`:
 - **gaps**: 0-4 honest bullets.
 - **headline**: exactly `Technical Product Manager` or `Technical Product Owner`. Use Owner
   when the posting is a Product Owner role, otherwise Manager. No extra words.
-- **summary**: two sentences, exactly 350 characters (the master Canva summary length), first
-  person implied (no "I"). Lead with the experience most relevant to this posting and keep
-  every fact inside the master CV. This length is what fits the one-page Canva frame.
+- **summary**: follow the `human` skill. Two sentences, exactly 350 characters (the master
+  Canva summary length), no "I". Sound like a person describing real work, not a brochure.
+  Lead with the experience most relevant to this posting and keep every fact inside the
+  master CV. This length is what fits the one-page Canva frame.
 - **cvMarkdown**: the full CV in Markdown, starting with `# Samvel Demirtshyan`, then the new
   headline, contact line, `## Professional Summary` with the new summary, then the CV's
   sections. Reorder skills and bullets so the posting's must-haves surface first and mirror
   its keywords where the CV supports them (ATS-friendly). Keep every role, date and employer.
-- **coverLetter**: 250-350 words, plain text, addressed to the hiring team at the company.
-  Open with why this specific role and company, give two short proof stories from the CV
-  mapped to the posting's top needs, and close with a clear call to action. No clichés, no
-  invented facts. Sign as Samvel Demirtshyan.
+- **coverLetter**: follow the `human` skill. At most two paragraphs of plain text. Open with
+  this company and role, give one proof from the CV, and end the second paragraph with
+  Samvel Demirtshyan. No third paragraph, no invented facts.
 - Write in the posting's language only if it is not English and the CV shows that language.
   Otherwise write in English.

@@ -1,6 +1,7 @@
 import { defineTool } from '@cursor/bdk/tools';
 import { z } from 'zod';
 import { DAILY_LIMIT } from '../lib/config.js';
+import { isShortCoverLetter } from '../lib/letter.js';
 import { fingerprint } from '../lib/sources/index.js';
 import { dayJobIds, keys, rememberDelivered, today, wasDelivered, type ApplicationPack } from '../lib/store.js';
 
@@ -24,7 +25,9 @@ export default defineTool({
     headline: z.string().min(10).max(220),
     summary: z.string().min(150).max(1200),
     cvMarkdown: z.string().min(400),
-    coverLetter: z.string().min(400).max(4000),
+    coverLetter: z
+      .string()
+      .refine(isShortCoverLetter, 'Cover letter must be 1 or 2 paragraphs (80–1800 characters).'),
     canvaUrl: z.string().url().optional(),
   }),
   effect: 'write',

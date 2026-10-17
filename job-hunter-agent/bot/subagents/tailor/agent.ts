@@ -2,5 +2,5 @@ import { defineAgent } from '@cursor/bdk';
 
 export default defineAgent({
   description:
-    'Tailoring: given the master CV and one job posting, write the fit analysis, tailored headline, professional summary, full tailored CV and cover letter for that job.',
+    'Tailoring: given the master CV and one job posting, write the fit analysis, headline, a human professional summary, full CV, and a cover letter of at most two paragraphs.',
 });
