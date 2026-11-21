@@ -23,8 +23,8 @@ export const ALL_SOURCES: JobSource[] = [
 
 export const CANDIDATE = {
   name: 'Samvel Demirtshyan',
-  canvaDesignId: 'DAElqCw-QEM',
-  canvaDesignUrl: 'https://www.canva.com/design/DAElqCw-QEM/-V4KXzsv7xWi87VzuCMP5A/edit',
+  canvaDesignId: 'DAHaQ8hNl3g',
+  canvaDesignUrl: 'https://www.canva.com/design/DAHaQ8hNl3g/p70uakjYQxTQirjsG8gfCA/edit',
   timeZone: 'Asia/Yerevan',
 };
 
